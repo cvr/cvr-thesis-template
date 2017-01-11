@@ -1,0 +1,221 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Template for PhD Thesis
+%%
+%% Author: Carlos Veiga Rodrigues <cvrodrigues@gmail.com>
+%% Copyright (C) 2013 by Carlos Veiga Rodrigues
+%%
+%% This file may be distributed and/or modified under the conditions of
+%% the LaTeX Project Public License, either version 1.3 of this license
+%% or (at your option) any later version.
+%% The latest version of this license is in:
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of
+%% LaTeX version 2003/06/01 or later.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% PREAMBLE
+\documentclass[a4paper,11pt,titlepage,twoside]{book}
+\special{papersize=210mm,297mm}
+
+%% tex.stackexchange.com/questions/45205/find-out-which-packages-are-used
+\listfiles
+
+\usepackage{calc}
+\usepackage{geometry}
+\geometry{a4paper,ignoremp,ignoreheadfoot,ignoreall,
+top=30mm,bottom=30mm,left=30mm,right=30mm,
+head=3ex,foot=3ex}
+
+\usepackage{graphicx}
+\usepackage[pdftex]{color}
+\pdfpageattr{/Group << /S /Transparency /I true /CS /DeviceRGB>>}
+
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese,english]{babel}
+\selectlanguage{english}
+
+\usepackage[fleqn]{amsmath}
+\usepackage{mathtools}
+\usepackage[psamsfonts]{amsfonts}
+\usepackage[psamsfonts]{amssymb}
+\usepackage{amsxtra}
+\usepackage{amscd}
+\usepackage{latexsym}
+\usepackage{textcomp}
+
+%% FONTS WITH MATH SUPPORT
+%% Latin Modern + Latin Modern Sans + Latin Modern Typewriter
+%\usepackage{lmodern}
+%% Palatino + Pazo math 
+\usepackage[sc]{mathpazo} \linespread{1.05}
+%% Times + Symbol math
+%\usepackage{mathptmx}
+
+%% HYPHENATION
+\usepackage{hyphenat}
+\input{./chapters/hyphenation_list.tex}
+
+%% FOR A CORRECT USE OF URL FIELDS
+\usepackage{url}
+\usepackage[round, authoryear]{natbib}
+
+%% NOMENCLATURE
+\usepackage{nomencl}
+\RequirePackage{ifthen}
+\renewcommand{\nomgroup}[1]{%
+  \ifthenelse{\equal{#1}{R}}{\vspace{1ex}\item[\textbf{Roman symbols}]}{%
+  \ifthenelse{\equal{#1}{G}}{\vspace{1ex}\item[\textbf{Greek symbols}]}{%
+  \ifthenelse{\equal{#1}{Y}}{\vspace{1ex}\item[\textbf{Other symbols}]}{%
+}}}}
+\makenomenclature
+
+%% OTHER PACKAGES AND COMMANDS
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{booktabs}
+\usepackage{tabularx}
+%\usepackage{parskip}
+
+%% APPENDIXES
+\usepackage[toc,page,title,titletoc,header]{appendix}
+\newcommand{\StartAppendix}{%
+	\renewcommand{\theequation}{\Alph{chapter}.\arabic{equation}}
+	\renewcommand{\thetable}{\Alph{chapter}.\arabic{table}}
+	\renewcommand{\thefigure}{\Alph{chapter}.\arabic{figure}}
+}
+
+%% TESTING - TO GENERATE SAMPLE TEXT
+\usepackage{blindtext}
+
+%% PAGE HEADERS
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{
+        \fancyhf{}
+        \fancyfoot[C]{\small{\thepage}}
+        \renewcommand{\headrulewidth}{0pt}
+}
+
+\fancypagestyle{mainheadings}{
+        \fancyhf{}
+        \fancyhead[CO]{\small{\textit{\nouppercase{\leftmark}}}}
+        \fancyhead[CE]{\small{\textit{\nouppercase{\rightmark}}}}
+        \fancyhead[RO,LE]{\small{\thepage}}
+        \renewcommand{\headrulewidth}{0pt}
+}
+
+%% MYTITLEPAGE
+\usepackage{mytitlepage}
+\title{Title of the dissertation}
+\author{The author's name}
+\PresentAcademicDegree{MSc in Mechanical Engineering}
+\University{University of Somewhere\\[1ex]Faculty of Engineering}
+\UniversityLogo{mytitlepage_logo.pdf}
+\ApplyingUniversity{University of Somewhere}
+\ApplyingAcademicDegree{Doctor in Mechanical Engineering}
+\date{June 2013}
+
+%% COPYRIGHT / CREDITS
+\TitlebackTop{%
+\textbf{Contact information:}\\
+The author's name\\
+Address: street, number, postal code\\
+email: author@mail.com
+}
+\TitlebackBottom{{\textcopyright} University of Somewhere. All rights reserved.}
+%\RemoveCredits
+
+%% PDF HYPERREF - SHOULD BE THE LAST
+\usepackage[unicode=true]{hyperref}
+\hypersetup{%
+pdftitle={Title of the dissertation},
+pdfauthor={Carlos Alberto Veiga Rodrigues},
+pdfsubject={PhD dissertation},
+pdfcreator={pdf\LaTeX\ with \flqq hyperref\frqq and the CVR thesis template},
+pdfproducer={Copyright {\textcopyright} Carlos Veiga Rodrigues},
+pdfkeywords={},
+pdftoolbar=true,
+pdfmenubar=true,
+pdfnewwindow=false,
+pdfpagelayout={SinglePage},
+pdfstartview={Fit},
+pdfview={Fit},
+colorlinks=true,
+}
+
+
+%%% BEGIN DOCUMENT
+\begin{document}
+\pagenumbering{Roman}
+\pagestyle{empty}
+\maketitle
+%\phantom{}
+
+
+%%% FRONTMATTER
+\frontmatter
+\pagestyle{plain}
+
+\phantomsection
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\input{./chapters/abstract.tex}
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Contents}
+\tableofcontents
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of figures}
+\listoffigures
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of tables}
+\listoftables
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Nomenclature}
+\printnomenclature[3cm]
+\include{./chapters/nomenclature}
+
+
+%%% MAINMATTER
+\mainmatter
+%\pagestyle{headings}
+\pagestyle{mainheadings}
+
+%% CHAPTERS
+\include{./chapters/01_intro}
+\include{./chapters/02_method}
+
+%% APPENDIX
+\begin{appendices}
+\StartAppendix
+\include{./chapters/appendix_a}
+\end{appendices}
+
+
+%%% BACKMATTER
+\backmatter
+
+%% BIBLIOGRAPHY
+\bibliographystyle{plainnat}
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{bibliografia}
+
+%% ACKNOWLEDGEMENTS
+\pagestyle{plain}
+\chapter*{Acknowledgements}
+\phantomsection
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\input{./chapters/acknowledgements.tex}
+
+\end{document}
+%%% END
+
