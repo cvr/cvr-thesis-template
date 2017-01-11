@@ -25,3 +25,13 @@ This work consists of the files:
 The `mytitlepage.sty` file is based on the `titling` package
 by Peter Wilson <pandgwilson@earthlink.net>
 
+The remaining files are just examples for
+    `bibliografia.bib`
+    `chapters/hyphenation_list.tex`
+    `chapters/abstract.tex`
+    `chapters/nomenclature.tex`
+    `chapters/01_intro.tex`
+    `chapters/02_method.tex`
+    `chapters/appendix_a.tex`
+    `chapters/acknowledgements.tex`
+
